@@ -1,10 +1,12 @@
 from django.db.models import Q
 from django.shortcuts import render, redirect
 from .models import Recipe
-from .forms import UserRegisterForm
+from .forms import *
 from django.views.generic import (
     ListView,
 )
+import random
+
 def home(request):
     return render(request, 'base/sign.html')
 
@@ -27,8 +29,6 @@ class RecipeListviewevent(ListView):
     template_name = 'Recipe.html'
     context_object_name = 'Recipe'
 
-
-
 def user_register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -40,3 +40,31 @@ def user_register(request):
     else:
         form = UserRegisterForm ()
     return render(request, 'base/sign.html', {'form': form})
+
+def post_recipe(request):
+    if request.method == 'POST':
+        form = RecipePostForm(request.POST)
+        name = form.cleaned_data['name']
+        step_no = []
+        step = []
+        time = []
+        i = 0
+        recipe_id = random.randint()
+
+        while(1):
+            if(form.cleaned_data['step_no'+str(i)]):
+                step_no.append(form.cleaned_data['step_no'+str(i)])
+                step.append(form.cleaned_data['step_no'+str(i)])
+                time.append(form.cleaned_data['step_no'+str(i)])
+            else:
+                break
+        
+        for i in step_no:
+            form = RecipePostForm(recipe_id, name, step_no[i], step[i], time[i])
+            form.save()
+        
+            
+        return redirect('base/home.html')
+    else:
+        form = RecipePostForm()
+    return render(request, 'base/post_recipe.html', {'form': form})
