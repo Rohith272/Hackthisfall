@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+p {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 0px;
+}
+</style>
+</head>
+<body>
+
+<div class="Cards fade">
+	<div>Instruction 1 <span class="Time">00:35</span> minutes!</div>
+</div>
+<div class="Cards fade">
+	<div> Instruction 2 <span class="Time">01:00</span> minutes!</div>
+</div>
+<div class="Cards fade">
+	<div> Instruction 3 <span class="Time">00:05</span> minutes!</div>
+</div>
+
+<script>
+var i, durations= [];
+var cards = document.getElementsByClassName("Cards");
+var displaytime = document.getElementsByClassName("Time");
+var times, timer;
+
+for(i = 0; i < cards.length; i++){
+	// cards[i].style.display = "none";
+    durations[i] = document.getElementsByClassName("Time")[i].innerText;
+}
+
+i = 0;
+playrecipe();
+
+function playrecipe() {
+    if(i >= cards.length)
+        return;
+    if(i>0){
+    //	cards[i-1].style.display = "none";
+    }
+    times = durations[i].split(':');
+    if (times.length == 3) {
+    	timer = times[0]*60*60+times[1]*60+times[2]%60;
+    } else {
+    	timer = times[0]*60+times[1]%60;
+    }
+    setTimeout(timer_countdown(timer, displaytime[i]), timer);
+}
+
+function timer_countdown(timer, display){
+
+    setInterval(function () {
+        
+    	hours = parseInt(timer / 3600, 10);
+        minutes = parseInt(timer / 60, 10) - hours*60;
+        seconds = parseInt(timer % 60, 10);
+		
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+		timestring = hours > 0 ? (hours+':'+ minutes + ":" + seconds) : (minutes+':'+seconds);
+        display.textContent = timestring;
+
+        if (--timer < 0) {
+            timer = durations[i];
+        }
+        
+    }, 1000);
+}
+</script>
+
+</body>
+</html>
