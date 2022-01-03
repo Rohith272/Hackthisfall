@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
 
 <head>
@@ -28,8 +23,8 @@ and open the template in the editor.
                 </div>
                 <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="sign.php" class=""><span class="glyphicon glyphicon-user">SignUp</span></a></li>
-                        <li><a href="login.php"><span class="glyphicon glyphicon-log-in">Login</span></a></li>
+                        <li><a href="sign.html" class=""><span class="glyphicon glyphicon-user">SignUp</span></a></li>
+                        <li><a href="login.html"><span class="glyphicon glyphicon-log-in">Login</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -42,7 +37,17 @@ and open the template in the editor.
                     <form>
                         <h2>SIGN UP</h2>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Name" name="Name">
+                            <input type="text" class="form-control" placeholder="First Name" name="First Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Last Name" name="Last Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="User Name" name="User Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="start">Date of Birth</label>
+                            <input type="date" id="dob" name="Date of Birth" min="1900-01-01" max="2022-07-22">
                         </div>
                         <div class="form-group">
                             <input type="e-mail" class="form-control" placeholder="E-mail" name="E-mail">
@@ -51,13 +56,20 @@ and open the template in the editor.
                             <input type="password" class="form-control" placeholder="Password" name="Password">
                         </div>
                         <div class="form-group">
-                            <input type="contact" class="form-control" placeholder="Contact" name="Contact">
+                            <input type="contact" class="form-control" placeholder="Phone Number" name="Phone Number">
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="City" name="City">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Address" name="Address">
+                            <select id="country" name="country">
+                                <option value="country">Select your country</option>
+                                <option value="Newzealand">India</option>
+                                <option value="Pakistan">Pakistan</option>
+                                <option value="Srilanka">Sri Lanka</option>
+                                <option value="Bangladesh">Bangladesh</option>
+                                <option value="Nepal">Nepal</option>
+                            </select>
                         </div>
                         <button class="btn btn-primary">Submit</button>
                     </form>
@@ -72,8 +84,8 @@ and open the template in the editor.
     </main>
     <footer>
         <div class="container">
-            <center>
-                Copyright © Lifestyle Store. All Rights Reserved and Contact Us: +91 90000 00000
+            <center>    
+                Copyright @team reci-pie team
             </center>
         </div>
     </footer>
