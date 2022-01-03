@@ -50,6 +50,7 @@ def post_recipe(request):
         time = []
         i = 0
         recipe_id = random.randint()
+        user=request.user
 
         while(1):
             if(form.cleaned_data['step_no'+str(i)]):
@@ -61,7 +62,9 @@ def post_recipe(request):
         
         for i in step_no:
             form = RecipePostForm(recipe_id, name, step_no[i], step[i], time[i])
-            form.save()
+            r = form.save(commit=False)
+            r.user = user
+            r.save()
         
             
         return redirect('base/home.html')
